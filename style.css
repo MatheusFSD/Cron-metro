@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Josefin+Sans:wght@400;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --fontePrincipal: 'Inter';
+}
+
+main {
+    background-color: #e2e5ec;
+    height: 100vh;
+}
+
+.formulario {
+    max-width: 940px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-bottom: 64px;
+    padding-top: 32px;
+    gap: 8px;
+    
+}
+
+.numero__series {
+    display: flex;
+    font-size: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: var(--fontePrincipal);
+    margin-bottom: 16px;
+    gap: 16px;
+}
+
+.numero {
+    width: 64px;
+    height: 64px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #ffffff;
+    line-height: 64px;
+}
+
+.numero-completo {
+    background-color: #474545;
+    color: #ffffff;
+}
+
+.série, .descanso, .botão {
+    max-width: 350px;
+}
+
+.botão {
+    font-family: var(--fontePrincipal);
+    font-size: 16px;
+    padding: 16px 24px;
+    outline: 0;
+    border: 0 none;
+    border-radius: 32px;
+    box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, 0.25);
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.série, .descanso {
+    padding: 16px 24px;
+    border-radius: 32px;
+    box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.25);
+    font-family: var(--fontePrincipal);
+    font-size: 16px;
+    border: 0 none;
+    outline: 0;
+    box-sizing: border-box
+}
+
+.form_main {
+    max-width: 940px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 32px;
+    margin: auto;
+    padding: 64px 0;
+}
+
+.cronometro {
+    text-align: center;
+    font-size: 64px;
+    font-family: var(--fontePrincipal);
+    margin-bottom: 32px;
+}
+
+.botões {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    font-family: var(--fontePrincipal);
+    flex-wrap: wrap;
+}
+
+.btn__cron {
+    font-size: 16px;
+    padding: 16px 24px;
+    outline: 0;
+    border: 0 none;
+    border-radius: 32px;
+    box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, 0.25);
+    background-color: #ffffff;
+    cursor: pointer;
+    width: 124px;
+}
+
+@media only screen and (max-width: 960px) {
+    .formulario {
+        padding: 16px 16px 0 16px;
+    }
+
+    .numero__series {
+        margin: 0 16px 16px 16px;
+    }
+
+    .form_main {
+        margin: auto 16px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .série, .descanso, .botão {
+        padding: 12px 24px;
+        font-size: 14px;
+        max-width: 100%;
+    }
+
+    .numero__series {
+        display: flex;
+        font-size: 18px;
+        gap: 8px;
+    }
+
+    .numero {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .form_main {
+        padding: 40px 0 32px 0;
+    }
+
+    .cronometro {
+        font-size: 32px;
+        margin-bottom: 32px;
+    }
+
+    .botões {
+        gap: 16px;
+    }
+    
+    .btn__cron {
+        font-size: 14px;
+        padding: 16px 0;
+        width: 80px;
+    }
+}
