@@ -164,7 +164,6 @@ function timer(tempoDigitado) {
         indicadorInicio = true;
 
         if(i == $(".numero__series").children().size()) {
-            $(".numero__series").children().removeClass("numero-completo");
             i = 0;
             $(".reset").text("🔄");
             indicadorTermino = true;
