@@ -51,6 +51,9 @@ let minute = 0;
 let second = 0;
 let millisecond = 0;
 
+let indicadorInicio = true;
+let indicadorTermino = false;
+
 let sectionNumSeries = document.querySelector(".numero__series");
 
 let cron;
@@ -67,14 +70,48 @@ botao.addEventListener("click", coletaDados);
 "use strict";
 
 
-document.form_main.start.onclick = () => start(tempoDigitado);
-document.form_main.pause.onclick = () => pause();
-document.form_main.reset.onclick = () => reset();
+$(".start").click(function() { 
+    start(tempoDigitado);
+});
+
+$(".pause").click(function() { 
+    pause();
+});
+
+$(".reset").click(function() { 
+    reset();
+});
+
+$(".botão-despausa").click(function() {
+    despausa(tempoDigitado);
+});
+
+
+
+
 
 function start(tempoDigitado) {
     pause();
     
     cron = setInterval(() => { timer(tempoDigitado); }, 10);
+
+    if(indicadorInicio == true) {
+        $(".numero__series").children().eq(i).addClass("numero-completo");
+        indicadorInicio = false;
+        i++;
+    }
+
+    // $(".start").addClass("botão-despausa");
+    // $(".botão-despausa").removeClass("start");
+    
+}
+
+function despausa(tempoDigitado) {
+    pause();
+    
+    cron = setInterval(() => { timer(tempoDigitado); }, 10);
+
+    console.log("Não, eu que fui clicado");
     
 }
 
@@ -92,6 +129,13 @@ function reset() {
     document.getElementById('second').innerText = '00';
     document.getElementById('millisecond').innerText = '000';
     $("#start").attr("disabled", false);
+
+    if(indicadorTermino == true) {
+        $(".numero__series").children().removeClass("numero-completo");
+        i = 0;
+        $(".reset").text("reset");
+        indicadorTermino = false;
+    }
 }
 
 
@@ -117,19 +161,16 @@ function timer(tempoDigitado) {
     if (second == seconds && minute == minutes) {
         pause();
         $("#start").attr("disabled", true);
-        $(".numero__series").children().eq(i).addClass("numero-completo");
-        i++;
-
+        indicadorInicio = true;
 
         if(i == $(".numero__series").children().size()) {
-            alert("acabou");
-            $("#start").attr("disabled", false);
             $(".numero__series").children().removeClass("numero-completo");
-            reset();
             i = 0;
+            $(".reset").text("🔄");
+            indicadorTermino = true;
         }
-
     }
+
     document.getElementById('hour').innerText = returnData(hour);
     document.getElementById('minute').innerText = returnData(minute);
     document.getElementById('second').innerText = returnData(second);
@@ -139,4 +180,3 @@ function timer(tempoDigitado) {
 function returnData(input) {
     return input > 10 ? input : `0${input}`
 }
-
